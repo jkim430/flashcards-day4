@@ -1,0 +1,16 @@
+<div 
+  class="flash-card" 
+  border-on-hover>
+    <h1>
+      {{ currentCard.question}}
+    </h1>
+    <ul class="flash-card-answers">
+        <li class="flash-card-answer"
+            ng-repeat="answer in currentCard.answers">
+            {{ answer.text }}
+        </li>
+    </ul>
+    <button ng-click="editCard()">Edit</button>
+</div>
+
+<ui-view></ui-view>

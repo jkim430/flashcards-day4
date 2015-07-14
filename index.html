@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <base href="/">
-        <title>Flash Cards</title>
-        <!-- We've provided some styles for you, aren't we nice? -->
-        <link rel="stylesheet" type="text/css" href="reset.css" />
-        <link rel="stylesheet" type="text/css" href="style.css" />
-    </head>
-    <body>
-      <div ng-app="FlashCardApp">
-        <div>
-          <button ui-sref="statistics">Scoreboard</button>
-          <button ui-sref="flashCardForm">Add Card</button>
-          <button ui-sref="flashCardView">Flashcards</button>
-          <button ui-sref="main">Home</button>
-        </div>
-        <br>
-        <ui-view></ui-view>
+  <head>
+    <base href="/">
+    <title>Flash Cards</title>
+    <!-- We've provided some styles for you, aren't we nice? -->
+    <link rel="stylesheet" type="text/css" href="reset.css" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <div ng-app="FlashCardApp">
+      <div>
+        <button ui-sref="statistics">Scoreboard</button>
+        <button ui-sref="flashCardForm">Add Card</button>
+        <button ui-sref="flashCardView">Flashcards</button>
+        <button ui-sref="main">Home</button>
       </div>
-      <script src="angular.js"></script>
-      <script src="angular-ui-router/build/angular-ui-router.min.js"></script>
-      <script src="app.js"></script>
-      <script src="controllers/flashCard.controller.js"></script>
-      <script src="controllers/main.controller.js"></script>
-      <script src="controllers/stats.controller.js"></script>
-      <script src="controllers/addCard.controller.js"></script>
-      <script src="factories/flashCard.factory.js"></script>
-      <script src="factories/score.factory.js"></script>
-      <script src="directives/loader/loader.directive.js"></script>
-      <script src="directives/flashCard/flashCard.directive.js"></script>
-      <script src="directives/borderOnHover/borderOnHover.directive.js"></script>
-    </body>
+      <br>
+      <ui-view></ui-view>
+    </div>
+    <script src="angular.js"></script>
+    <script src="angular-ui-router/build/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/flashCard.controller.js"></script>
+    <script src="controllers/main.controller.js"></script>
+    <script src="controllers/manageCard.controller.js"></script>
+    <script src="controllers/stats.controller.js"></script>
+    <script src="controllers/addCard.controller.js"></script>
+    <script src="factories/flashCard.factory.js"></script>
+    <script src="factories/score.factory.js"></script>
+    <script src="directives/loader/loader.directive.js"></script>
+    <script src="directives/flashCard/flashCard.directive.js"></script>
+    <script src="directives/borderOnHover/borderOnHover.directive.js"></script>
+  </body>
 </html>

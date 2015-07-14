@@ -1,0 +1,29 @@
+<div>
+  <form name="cardForm" ng-submit="postFlashCard()">
+    <h3>question</h3>
+    <p>
+      <input type="text" value="{{currentCard.question}}" required>
+    </p>
+    <h3>category</h3>
+    <p>
+      <select required>
+        <option selected="selected">{{currentCard.category}}</option>
+        <option ng-repeat="category in otherCats">{{ category }}</option>
+      </select>
+    </p>
+    <h3>answers</h3>
+    <p ng-repeat="answer in currentCard.answers">
+      <input
+        type="radio"
+        name="correctAnswer"
+        ng-model="answer.correct"
+        ng-change="setCorrect(answer)"
+        ng-value="true"
+        >
+      <input
+        type="text"
+        ng-model="answer.text" required>
+    </p>
+    <input type="submit">
+  </form>
+</div>

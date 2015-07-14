@@ -40,7 +40,7 @@
     </form>
   </div>
   <flash-card
-    ng-repeat="flashCard in flashCards | orderBy: 'question'"
-    card="flashCard"
+    ng-repeat="flashCard in flashCards"
+    card="flashCard" fci="$index"
   ></flash-card>
 </div>

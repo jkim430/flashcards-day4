@@ -1,12 +1,12 @@
-app.controller('MainCtrl', function ($scope, FlashCardFactory) {
+app.controller('MainCtrl', function($scope, FlashCardFactory, $rootScope) {
     // make a query
     FlashCardFactory.getFlashCards()
-    .then(function (cards) {
-      $scope.flashCards = cards;
-    })
-    .catch(function (e) {
-      console.log('e', e);
-    })
+        .then(function(cards) {
+            $rootScope.flashCards = cards;
+        })
+        .catch(function(e) {
+            console.log('e', e);
+        })
 
     $scope.categories = [
         'MongoDB',
@@ -17,18 +17,18 @@ app.controller('MainCtrl', function ($scope, FlashCardFactory) {
 
     $scope.activeCat = null;
 
-    $scope.filterByCategory = function (cat) {
-      $scope.activeCat = cat;
-      $scope.flashCards = null;
-      FlashCardFactory.getFlashCards(cat)
-      .then(function (cards) {
-        $scope.flashCards = cards;
-      });
+    $scope.filterByCategory = function(cat) {
+        $scope.activeCat = cat;
+        $rootScope.flashCards = null;
+        FlashCardFactory.getFlashCards(cat)
+            .then(function(cards) {
+                $rootScope.flashCards = cards;
+            });
     };
 
-    $scope.$on('addedCard', function (e, card) {
-      if ($scope.activeCat === card.category) {
-        $scope.flashCards.push(card);
-      }
+    $scope.$on('addedCard', function(e, card) {
+        if ($scope.activeCat === card.category) {
+            $rootScope.flashCards.push(card);
+        }
     });
-  })
+})
