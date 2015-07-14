@@ -55,3 +55,7 @@ app.get('/cards', function (req, res, next) {
     });
 
 });
+
+app.get('/*', function(req, res) {
+    res.sendFile(indexHtmlPath);
+})
