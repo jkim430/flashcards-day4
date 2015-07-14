@@ -30,9 +30,11 @@ app.config(function($stateProvider, $locationProvider) {
             templateUrl: '/templates/manageCard.html'
         })
         .state('manageCard.editCard', {
-            //parent: 'manageCard',
             url: '/edit',
-            //controller: 'ManageCardCtrl',
             templateUrl: '/templates/editCard.html'
+        })
+        .state('manageCard.deleteCard', {
+            url: '/delete',
+            templateUrl: '/templates/deleteCard.html'
         });
 })

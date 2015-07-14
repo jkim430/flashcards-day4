@@ -24,32 +24,34 @@ var indexHtmlPath = path.join(__dirname, '../index.html');
 app.use(express.static(publicPath));
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
 
 // If we're hitting our home page, serve up our index.html file!
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     res.sendFile(indexHtmlPath);
 });
 
-app.post('/cards', function (req, res, next) {
+app.post('/cards', function(req, res, next) {
     FlashCardModel.create(req.body)
-    .then(function (newCard) {
-        res.json(newCard);
-    })
-    .then(null, next);
+        .then(function(newCard) {
+            res.json(newCard);
+        })
+        .then(null, next);
 });
 
-app.get('/cards', function (req, res, next) {
+app.get('/cards', function(req, res, next) {
 
     var modelParams = {};
 
     if (req.query.category) {
-    	modelParams.category = req.query.category;
+        modelParams.category = req.query.category;
     }
 
-    FlashCardModel.find(modelParams, function (err, cards) {
+    FlashCardModel.find(modelParams, function(err, cards) {
         if (err) return next(err);
-        setTimeout(function () {
+        setTimeout(function() {
             res.send(cards);
         }, Math.random() * 1000);
     });
@@ -58,4 +60,32 @@ app.get('/cards', function (req, res, next) {
 
 app.get('/*', function(req, res) {
     res.sendFile(indexHtmlPath);
+})
+
+app.put('/edit', function(req, res, next) {
+    FlashCardModel.findOne({
+        question: req.body.question
+    }).exec()
+        .then(function(card) {
+            card.question = req.body.editedCard.question;
+            card.category = req.body.editedCard.category;
+            card.answers = req.body.editedCard.answers;
+            card.save();
+            res.end();
+        })
+        .then(null, function(err) {
+            next(err);
+        })
+})
+
+app.delete('/delete/:question', function(req, res, next) {
+    FlashCardModel.remove({
+        question: req.params.question
+    }).exec()
+        .then(function() {
+            res.end();
+        })
+        .then(null, function(err) {
+            next(err);
+        })
 })

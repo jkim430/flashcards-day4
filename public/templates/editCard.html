@@ -1,17 +1,18 @@
+<br>
 <div>
-  <form name="cardForm" ng-submit="postFlashCard()">
-    <h3>question</h3>
+  <form name="cardForm" ng-submit="editFlashCard()">
+    <h3>Question</h3>
     <p>
-      <input type="text" value="{{currentCard.question}}" required>
+      <input type="text" ng-model="currentCard.question" value="{{currentCard.question}}" required>
     </p>
-    <h3>category</h3>
+    <h3>Category</h3>
     <p>
-      <select required>
+      <select ng-model="currentCard.category" required>
         <option selected="selected">{{currentCard.category}}</option>
         <option ng-repeat="category in otherCats">{{ category }}</option>
       </select>
     </p>
-    <h3>answers</h3>
+    <h3>Answers</h3>
     <p ng-repeat="answer in currentCard.answers">
       <input
         type="radio"
